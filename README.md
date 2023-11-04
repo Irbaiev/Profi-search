@@ -1,6 +1,16 @@
 # Profi Search
 
-specialist search service
+Profi-Search - это инновационная платформа, созданная для содействия в поиске и связи между профессионалами и потенциальными заказчиками. Наша цель - сделать поиск квалифицированных специалистов и услуг максимально простым, удобным и эффективным. Вот, что вы можете делать с помощью Profi-Search:
+
+Регистрация через учетные записи Google и GitHub: Присоединяйтесь к нашей платформе всего в несколько кликов, используя свои существующие аккаунты Google или GitHub, и начните использовать ее сразу.
+
+Выбор роли: При регистрации, вы сможете выбрать, хотите ли вы быть специалистом или заказчиком. Это поможет вам настроить ваш профиль в соответствии с вашими потребностями.
+
+Добавление образования и опыта работы: Для специалистов доступна возможность добавления своего образования и опыта работы, что позволяет заказчикам оценить вашу квалификацию и навыки более детально.
+
+Размещение своих услуг: Специалисты могут легко создавать профили своих услуг, описывать их особенности, предоставлять цены и доступность. Заказчики могут легко найти подходящие услуги и связаться с специалистами напрямую.
+
+Profi-Search предоставляет удобные инструменты для облегчения поиска, связи и сотрудничества между специалистами и заказчиками. Наша платформа обеспечивает прозрачность, надежность и удобство, делая процесс нахождения квалифицированных профессионалов и получения услуг более эффективным и удовлетворительным для всех сторон.
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
@@ -9,61 +19,34 @@ specialist search service
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
-## Basic Commands
+## Запуск проекта
+Чтобы запустить проект с помощью Docker Compose, выполните следующие шаги:
 
-### Setting Up Your Users
+Убедитесь, что у вас установлен Docker и Docker Compose.
 
--   To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+В корневом каталоге проекта выполните следующую команду:
 
--   To create a **superuser account**, use this command:
 
-        $ python manage.py createsuperuser
+```docker-compose up --build```
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+Это создаст и запустит все необходимые контейнеры для проекта.
 
-### Type checks
+Создание суперпользователя
+Чтобы создать суперпользователя и получить доступ к административной панели, выполните следующую команду:
 
-Running type checks with mypy:
 
-    $ mypy profi_search
+```docker-compose run --rm django python manage.py createsuperuser```
 
-### Test coverage
 
-To run the tests, check your test coverage, and generate an HTML coverage report:
 
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
+Откройте веб-браузер и перейдите по адресу ```http://127.0.0.1:8000/``` для доступа к главной странице.
 
-#### Running tests with pytest
 
-    $ pytest
+Перейдите по ```http://127.0.0.1:8000/api```, чтобы увидеть все URL-адреса для API.
 
-### Live reloading and Sass CSS compilation
+Административная панель
+После создания суперпользователя, вы можете получить доступ к административной панели по следующему адресу:
 
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
+```http://127.0.0.1:8000/admin```
 
-### Celery
-
-This app comes with Celery.
-
-To run a celery worker:
-
-``` bash
-cd profi_search
-celery -A config.celery_app worker -l info
-```
-
-Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
-
-## Deployment
-
-The following details how to deploy this application.
-
-### Heroku
-
-See detailed [cookiecutter-django Heroku documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html).
-
-### Docker
-
-See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
+В административной панели вы можете управлять пользователями, профилями специалистов и другими аспектами проекта.
